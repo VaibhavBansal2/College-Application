@@ -3,7 +3,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useState } from 'react';
-import cities from '../cities.json'
+import cities from '../../cities.json'
 
 
 const Dropdown = () => {

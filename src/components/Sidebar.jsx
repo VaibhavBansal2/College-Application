@@ -6,6 +6,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { makeStyles } from '@mui/styles';
+import { Link, useLocation } from 'react-router-dom';
 
 const drawerWidth = 150;
 
@@ -19,6 +20,14 @@ const useStyles = makeStyles((theme) => ({
 
 const Sidebar = () => {
     const classes = useStyles();
+    const location = useLocation();
+    const [page, setPage] = React.useState('Student')
+
+    React.useEffect(() => {
+        const currentPath = location.pathname.substring(1);
+        setPage(currentPath || 'Student');
+    }, [location]);
+
     return (
         <Drawer
             sx={{
@@ -37,11 +46,13 @@ const Sidebar = () => {
         >
             <Toolbar />
             <List>
-                {['Students', 'Departments', 'Faculty'].map((text) => (
+                {['Student', 'Department', 'Faculty'].map((text) => (
                     <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
+                        <Link to={`/${text}`} style={{ textDecoration: "none", color: (text === page) ? '#1976d2' : 'inherit' }}>
+                            <ListItemButton onClick={() => { setPage(text) }}>
+                                <ListItemText primary={text} />
+                            </ListItemButton>
+                        </Link>
                     </ListItem>
                 ))}
             </List>

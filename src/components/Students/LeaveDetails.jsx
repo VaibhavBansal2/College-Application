@@ -8,7 +8,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 const LeaveTable = ({ leaveDetails }) => {
-    // console.log(leaveDetails)
     return (
         <TableContainer component={Paper} sx={{ height: '50%' }}>
             <Table stickyHeader>
